@@ -238,5 +238,123 @@ i {
 
 #features {
     background: rgba(115, 66, 214, 0.1);
-    height: 1000px;
+    padding-top: 8vw;
 }
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book {
+    width: 25%;
+    padding: 24px;
+}
+
+.book__img {
+    max-height: 400px;
+    transition: all 300ms ease;
+    cursor: no-drop;
+}
+
+.book__img--wrapper {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+}
+
+.book:hover .book__img {
+    transform: scale(1.03);
+}
+
+.book__title {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.book__title:hover {
+    text-decoration: underline;
+    cursor: no-drop;
+}
+
+.book__ratings {
+    margin-bottom: 8px;
+    color: #fabf2a;
+}
+
+.book__price--normal {
+    text-decoration: line-through;
+    padding-right: 6px;
+    color: #bfbfbf;
+}
+
+/* BROWSE */
+
+#browse {
+    background: rgba(115, 66, 214, 0.1);
+
+}
+
+.browse__row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+.footer__logo {
+    width: 180px;
+    color: white;
+    /* Don't know why the white doesn't work?! */
+
+}
+
+.footer__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__row {
+    width: 100%;
+    max-width: 1000px;
+    margin: 24px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+}
+
+.footer__nav--links {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* Ready in the video at 53:59
+to see the Browse and footer solutions.
+I did OKAY getting through it solo, but I want
+to clean it up and take note.
+(Been studying a bit too long this morning and
+need to get to the gym so I can catch a game
+or two of pickleball with Susan? */
