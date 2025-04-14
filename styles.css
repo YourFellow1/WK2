@@ -8,9 +8,13 @@
   font-family: "Roboto", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-    max-width: 100vw;
-    overflow-x: hidden;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 nav {
@@ -28,6 +32,10 @@ It was a toolkit from the browser. */
 
 a {
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 img {
@@ -83,6 +91,78 @@ li {
 .nav__link--primary:hover {
   text-decoration: none;
 }
+
+.btn__menu {
+  background-color: transparent;
+  font-size: 40px;
+  border: none;
+  color: #7342d6;
+  display: none;
+}
+
+.menu__backdrop {
+  position: absolute;
+  background-color: #242424;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease;
+}
+
+.menu--open .menu__backdrop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu--open {
+  max-height: 100vh;
+  overflow-y: hidden;
+  /* It finally makes sense if you read each CSS block as
+  "when [.menu--open], do these things. If it's present at all, then
+  do these things. It's not part of the dom if it's not displayed, so
+  display: none; means it's not there at all. so the css doesn't occur.
+  or if it was [.menu--open] [.menu__backdrop], then the second one
+  doesn't do its thing. there's no comma between the two, so it's a pointer
+  to the class that is affected by the presence or state of the
+  .menu--open
+  This is probably an essential thing for javascript, and was def a
+  sticking point so far for me. */
+}
+
+.btn__menu--close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: 8px;
+  color: white;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu__list {
+  padding: 32px 0;
+  /* Added here instead of on the anchor tag because the
+  anchor tags don't "like" the padding. this is on the li wrapping the a tag. */
+}
+
+.menu__link {
+  font-size: 40px;
+  color: white;
+}
+
+
+/* LANDING */
 
 #landing {
   background: rgba(115, 66, 214, 0.1);
@@ -154,38 +234,43 @@ button:active {
   margin: 0 auto;
 }
 
+.no-cursor {
+  cursor: not-allowed;
+}
+
 /* HIGHLIGHTS */
 
 .highlight__wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 #highlights {
-    position: relative;
-    max-width: 100vw;
+  position: relative;
+  max-width: 100vw;
 }
 
 #highlights:before,
 #highlights:after {
-    background: url('./assets/wave.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    content: '';
-    position: absolute;
-    width: 101vw;
-    height: 12vw;
-    left: 0;
-    z-index: 1;
+  background: url("./assets/wave.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  width: 101vw;
+  height: 12vw;
+  left: 0;
+  z-index: 1;
 }
 
 #highlights:before {
-    top: 1px;
-    transform: translateY(-100%);
+  top: 1px;
+  transform: translateY(-100%);
 }
 
 #highlights:after {
-    bottom: 1px;
-    transform: translateY(100%) rotate(180deg); 
+  bottom: 1px;
+  transform: translateY(100%) rotate(180deg);
 }
 
 .highlight {
@@ -194,7 +279,6 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .highlight__img {
@@ -227,6 +311,7 @@ i {
 .highlight__subtitle {
   margin-bottom: 16px;
   font-size: 20px;
+  text-align: center;
 }
 
 .highlight__para {
@@ -237,118 +322,120 @@ i {
 /* FEATURES */
 
 #features {
-    background: rgba(115, 66, 214, 0.1);
-    padding-top: 8vw;
+  background: rgba(115, 66, 214, 0.1);
+  padding-top: 8vw;
 }
 
 .books {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .book {
-    width: 25%;
-    padding: 24px;
+  width: 25%;
+  padding: 24px;
 }
 
 .book__img {
-    max-height: 400px;
-    transition: all 300ms ease;
-    cursor: no-drop;
+  max-height: 400px;
+  transition: all 300ms ease;
+  cursor: no-drop;
 }
 
 .book__img--wrapper {
-    margin-bottom: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-    display: flex;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
 }
 
 .book:hover .book__img {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .book__title {
-    font-size: 20px;
-    margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .book__title:hover {
-    text-decoration: underline;
-    cursor: no-drop;
+  text-decoration: underline;
+  cursor: no-drop;
 }
 
 .book__ratings {
-    margin-bottom: 8px;
-    color: #fabf2a;
+  margin-bottom: 8px;
+  color: #fabf2a;
 }
 
 .book__price--normal {
-    text-decoration: line-through;
-    padding-right: 6px;
-    color: #bfbfbf;
+  text-decoration: line-through;
+  padding-right: 6px;
+  color: #bfbfbf;
 }
 
 /* BROWSE */
 
 #browse {
-    background: rgba(115, 66, 214, 0.1);
-
+  background: rgba(115, 66, 214, 0.1);
 }
 
 .browse__row {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 56px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* FOOTER */
 
 footer {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .footer__logo {
-    width: 180px;
-    color: white;
-    /* Don't know why the white doesn't work?! */
-
+  width: 160px;
+  /* color: white; */
+  /* Don't know why the white doesn't work?!
+    because it's an image.... so we use filter
+    grayscale(1) makes it all dark and invert(1) opposites it to white */
+  filter: grayscale(4) invert(1) contrast(0);
+  /* Except... mine didn't go white lettering. */
 }
 
 .footer__container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 56px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer__row {
-    width: 100%;
-    max-width: 1000px;
-    margin: 24px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 32px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
 }
 
 .footer__nav--links {
-    display: flex;
-    width: 100%;
-    max-width: 500px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0;
 }
 
 /* Ready in the video at 53:59
@@ -358,3 +445,66 @@ to clean it up and take note.
 (Been studying a bit too long this morning and
 need to get to the gym so I can catch a game
 or two of pickleball with Susan? */
+
+.footer__nav--link,
+.footer__copyright {
+  color: white;
+}
+
+
+/* Okay, not bad overall when following up with the video.
+Now it's time for making it reactive and creating the hamburger */
+
+.browse__books--scroll {
+  color: #242424;
+}
+
+/* Small phones, tablets, and Large Smartphones */
+@media (max-width: 768px) {
+  .header__description {
+    padding: 0 24px;
+  }
+  
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+  .book {
+    width: 50%;
+  }
+
+
+
+}
+
+
+
+/* small phones, large smartphones */
+
+
+@media (max-width: 550px) {
+  .nav__links {
+    display: none;
+  }
+
+  .btn__menu {
+    display: block;
+  }
+
+  .highlight {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  
+  .highlight:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
